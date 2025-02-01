@@ -9,9 +9,14 @@ function Register() {
     const [isRegistering, setIsRegistering] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
     const { currentUser } = useAuth()
+    const allowedDomain="@gla.ac.in";
 
     const onSubmit = async (e) => {
         e.preventDefault()
+        if(!email.endsWith(allowedDomain)){
+            setErrorMessage("Please enter a valid GLA email")
+            return;
+        }
         if (!isRegistering) {
             setIsRegistering(true)
             await doCreateUserWithEmailAndPassword(email, password).catch(err => {

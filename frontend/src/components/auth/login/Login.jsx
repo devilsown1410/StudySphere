@@ -19,6 +19,10 @@ function Login(){
     const onSubmit = async (e) => {
         e.preventDefault()
         if (!isSigningIn) {
+            if (!email.endsWith('@gla.ac.in')) {
+                setErrorMessage('Only @gla.ac.in email addresses are allowed.')
+                return
+            }
             setIsSigningIn(true)
             await doSignInWithEmailAndPaassword(email, password).catch(err => {
                 setErrorMessage(err.message)
