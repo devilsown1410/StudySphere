@@ -31,7 +31,7 @@ function Register() {
     }
 
     return (
-        <div className="max-w-md mx-auto mt-10 p-6 border border-gray-300 rounded-lg shadow-md bg-white">
+        <div className="relative mt-[4rem] max-w-md mx-auto p-6 border border-gray-300 rounded-lg shadow-md bg-white">
             <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
             {errorMessage && <p className="text-red-500 text-center mb-4">{errorMessage}</p>}
             <form onSubmit={onSubmit} className="flex flex-col">

@@ -8,6 +8,15 @@ import Dashboard from './components/Dashboard/Dashboard'
 import Register from './components/auth/Register/Register'
 import Login from './components/auth/login/Login'
 import { AuthProvider } from './contexts/authContext'
+import NavBar from './components/navbar/NavBar.jsx'
+
+const Layout = ({ children }) => (
+  <div>
+    <NavBar/>
+    {children}
+  </div>
+);
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,14 +25,35 @@ function App() {
     <AuthProvider>
       <Router>
         <>
-          <nav>
-            <Link to="/">Home</Link> | <Link to="/register">Register</Link> | <Link to="/login">Login</Link>
-          </nav>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/" 
+              element={
+                <Layout>
+                  <Home/>
+                </Layout>
+              } 
+            />
+            <Route path="/dashboard" 
+              element={
+                <Layout>
+                  <Dashboard />
+                </Layout>
+              } 
+            />
+            <Route path="/register" 
+              element={
+                <Layout>
+                  <Register />
+                </Layout>
+              } 
+            />
+            <Route path="/login" 
+              element={
+                <Layout>
+                  <Login />
+                </Layout>
+              } 
+            />
           </Routes>
         </>
       </Router>

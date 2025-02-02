@@ -46,7 +46,7 @@ function Login(){
     }
 
     return (
-        <div>
+        <div className='relative mt-[4rem]'>
             <h2>Login</h2>
             {errorMessage && <p>{errorMessage}</p>}
             <form onSubmit={onSubmit}>
