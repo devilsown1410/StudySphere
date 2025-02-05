@@ -85,7 +85,6 @@ function Login(){
           alignItems: "center",
           minHeight: "90vh",
           // background: 'linear-gradient(45deg, #6a11cb 0%, #2575fc 100%)',
-          backgroundImage: `url('../bg.png')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -119,10 +118,10 @@ function Login(){
                 required
                 onChange={(e) => setEmail(e.target.value)}
                 sx={{
-                  "& .MuiInputLabel-root": { color: "#2575fc" },
+                  "& .MuiInputLabel-root": { color: "rgb(73, 75, 130)" },
                   "& .MuiOutlinedInput-root": {
-                    "& fieldset": { borderColor: "#2575fc" },
-                    "&:hover fieldset": { borderColor: "#6a11cb" },
+                    "& fieldset": { borderColor: "rgb(66, 71, 200)" },
+                    "&:hover fieldset": { borderColor: "rgb(66, 71, 200)" },
                   },
                 }}
               />
@@ -135,12 +134,12 @@ function Login(){
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 sx={{
-                  "& .MuiInputLabel-root": { color: "#2575fc" },
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": { borderColor: "#2575fc" },
-                    "&:hover fieldset": { borderColor: "#6a11cb" },
-                  },
-                }}
+                    "& .MuiInputLabel-root": { color: "rgb(73, 75, 130)" },
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": { borderColor: "rgb(66, 71, 200)" },
+                      "&:hover fieldset": { borderColor: "rgb(66, 71, 200)" },
+                    },
+                  }}
               />
               <Button
                 onClick={onSubmit}
@@ -167,7 +166,7 @@ function Login(){
                 disabled={isSigningIn}
                 className='text-slate-600 text-[15px] hover:text-indigo-800'
                 style={{
-                    color: "rgb(66, 71, 200)",
+                    color: "rgb(114, 66, 140)",
                 }}
               >
                 Sign In with Google
@@ -175,7 +174,7 @@ function Login(){
               <br></br>
               <Link 
                 to="/forgot-password"
-                style={{ textDecoration: "none", color: "#2575fc" }}
+                style={{ textDecoration: "none", color: "rgb(73, 75, 154)" }}
                 >Forgot Password?
                 </Link>
             </Typography>
