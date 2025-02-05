@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import Logo from "./../../imgs/logo.png";
+
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,19 +15,16 @@ const NavBar = () => {
     <div className="flex justify-between bg-opacity-70 backdrop-blur-sm items-center p-4 md:z-10 z-40 fixed w-full top-0 left-0">
       <Link to="/">
         <motion.img
-          src={null}
-          className="h-8 px-4 cursor-pointer md:px-20"
+          src={Logo}
+          className="h-16 px-4 cursor-pointer md:px-20"
           alt="StudySphere Logo"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
         />
       </Link>
       
       <div className="hidden md:flex space-x-6 text-white font-semibold mr-20">
         <Link to="/">
           <motion.button
-            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-red-600 hover:bg-red-50 hover:border-red-300"
+            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-indigo-400 hover:font-bold hover:bg-red-50 hover:border-indigo-400"
             whileHover={{
               scale: 1.1,
             }}
@@ -37,7 +36,7 @@ const NavBar = () => {
         <div className="border-s my-4 border-indigo-300 h-4 justify-center"></div>
         <Link to="/about">
           <motion.button
-            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-red-600 hover:bg-red-50 hover:border-red-300"
+            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-indigo-400 hover:font-bold hover:bg-red-50 hover:border-indigo-400"
             whileHover={{
               scale: 1.1,
             }}
@@ -49,7 +48,7 @@ const NavBar = () => {
         <div className="border-s my-4 border-indigo-300 h-4 justify-center"></div>
         <Link to="/register">
           <motion.button
-            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-red-600 hover:bg-red-50 hover:border-red-300"
+            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-indigo-400 hover:font-bold hover:bg-red-50 hover:border-indigo-400"
             whileHover={{
               scale: 1.1,
             }}
@@ -61,7 +60,7 @@ const NavBar = () => {
         <div className="border-s my-4 border-indigo-300 h-4 justify-center"></div>
         <Link to="/login">
           <motion.button
-            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-red-600 hover:bg-red-50 hover:border-red-300"
+            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-indigo-400 hover:font-bold hover:bg-red-50 hover:border-indigo-400"
             whileHover={{
               scale: 1.1,
             }}

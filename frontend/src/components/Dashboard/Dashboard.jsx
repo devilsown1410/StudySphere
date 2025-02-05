@@ -17,7 +17,7 @@ function Dashboard() {
     }
 
     return (
-        <div>
+        <div className='relative mt-[4rem]'>
             <h1>Dashboard</h1>
             <p>Welcome, {currentUser.email}</p>
             <button onClick={handleSignOut}>Sign Out</button>
