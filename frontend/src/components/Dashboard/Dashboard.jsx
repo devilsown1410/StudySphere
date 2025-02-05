@@ -1,7 +1,8 @@
-import React from 'react'
-import { useAuth } from '../../contexts/authContext'
-import { doSignOut } from '../../firebase/auth'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { useAuth } from '../../contexts/authContext';
+import { doSignOut } from '../../firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import Header from './Header';
 
 function Dashboard() {
     const { currentUser } = useAuth()
@@ -17,11 +18,17 @@ function Dashboard() {
     }
 
     return (
-        <div className='relative mt-[4rem]'>
-            <h1>Dashboard</h1>
-            <p>Welcome, {currentUser.email}</p>
-            <button onClick={handleSignOut}>Sign Out</button>
+        <div className='relative min-w-screen m-0 p-0'>
+            <Header/>
+            <div>
+                <div className='relative mt-[4rem]'>
+                    <h1>Dashboard</h1>
+                    <p>Welcome, {currentUser.email}</p>
+                    <button onClick={handleSignOut}>Sign Out</button>
+                </div>
+            </div>
         </div>
+        
     )
 }
 

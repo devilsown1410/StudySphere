@@ -35,9 +35,7 @@ function App() {
             />
             <Route path="/dashboard" 
               element={
-                <Layout>
-                  <Dashboard />
-                </Layout>
+                <Dashboard />
               } 
             />
             <Route path="/register" 
