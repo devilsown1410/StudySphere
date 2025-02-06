@@ -2,3 +2,4 @@ backend/.env
 backend/package-lock.json
 backend/node_modules
 frontend/node_modules
+backend/studysphere-c95c8-firebase-adminsdk-fbsvc-e6cc9f53c2.json
