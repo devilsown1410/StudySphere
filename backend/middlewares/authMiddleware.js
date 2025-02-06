@@ -1,7 +1,7 @@
 const admin = require("firebase-admin");
 
 // Initialize Firebase Admin SDK
-const serviceAccount = require("../studysphere-c95c8-firebase-adminsdk-fbsvc-e6cc9f53c2.json"); // Update the path
+const serviceAccount = require("../admin-sdk.json"); // Update the path
 
 if (!admin.apps.length) {
   admin.initializeApp({
