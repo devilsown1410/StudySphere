@@ -16,11 +16,11 @@ const Header = () => {
             />
         </Link>
         <div className="flex space-x-4 pr-16">
-            <Link to="/" className="flex items-center space-x-1 text-indigo-200 hover:text-sky-200">
+            <Link to="/" className="flex items-center space-x-1 text-slate-500 hover:text-sky-200">
             <FaHome />
             <span>Home</span>
             </Link>
-            <Link to="/logout" className="flex items-center space-x-1 text-indigo-200 hover:text-sky-200">
+            <Link to="/logout" className="flex items-center space-x-1 text-slate-500 hover:text-sky-200">
             <FaSignOutAlt />
             <span>Logout</span>
             </Link>
