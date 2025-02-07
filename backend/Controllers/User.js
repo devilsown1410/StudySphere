@@ -35,5 +35,26 @@ const userProgress=async(req,res)=>{
         res.status(500).json({ message: "Error fetching progress" });
     }
 }
-
-module.exports={fetchUser,updateUser}
+const fetchStudents=async(req,res)=>{
+    try{
+        const students = await User.find({ role: "student" }).select("email codingProfiles");
+        res.json(students);
+    } catch(error){
+    res.status(500).json({ message: "Error fetching students" });
+    }
+}
+const createUser = async (req, res) => {
+    try {
+        const user=await User.findOne({ email: req.body.email });
+        if(user){
+            res.status(201).json(user);
+        }else{
+            const newUser = new User(req.body);
+            await newUser.save();
+            res.status(201).json({user:newUser});
+        }
+    } catch (error) {
+        res.status(500).json({ message: "Error creating user" });
+    }
+};
+module.exports={fetchUser,updateUser,fetchStudents,createUser}

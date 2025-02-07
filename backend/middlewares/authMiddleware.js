@@ -25,4 +25,12 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
+const verifyUniversity=async(req,res,next)=>{
+  const universityDomain=req.user.email.split("@")[1];
+  if(!universityDomain.includes("gla.ac.in")){
+    return res.status(403).json({message:"Access Denied"});
+  }
+  next();
+}
+
 module.exports = verifyToken;

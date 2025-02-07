@@ -1,5 +1,5 @@
 const express=require('express')
-const {uploadMaterial,fetchMaterial}=require('../Controllers/Material')
+const {uploadMaterial,fetchMaterial}=require('../Controllers/material')
 const router=express.Router()
 const verifyToken=require('../middlewares/authMiddleware')
 

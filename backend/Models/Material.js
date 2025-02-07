@@ -1,3 +1,4 @@
+const mongoose=require('mongoose')
 const materialSchema=new mongoose.Schema({
     title:String,
     fileUrl:String,
