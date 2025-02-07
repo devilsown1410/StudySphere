@@ -19,7 +19,7 @@ const Profile = () => {
           { platform: 'Codeforces', link: 'https://codeforces.com/profile/johndoe' },
           { platform: 'GitHub', link: 'https://github.com/johndoe' }
         ],
-        profilePhoto: 'https://via.placeholder.com/150'
+        profilePhoto: 'https://plus.unsplash.com/premium_photo-1682124752476-40db22034a58?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YW5pbWV8ZW58MHx8MHx8fDA%3D'
       });
     };
     fetchProfile();
@@ -44,13 +44,13 @@ const Profile = () => {
                     {profile.name}
                 </h4>
                 <Typography className='text-slate-400'>{profile.email}</Typography>
-                <Typography mt={2} className='text-orange-300 font-bold'>EDUCATION</Typography>
+                <Typography mt={2} className='text-red-300 font-bold'>EDUCATION</Typography>
                 <Typography color="white">{profile.college}</Typography>
                 <Typography color="white">{profile.degree}</Typography>
-                <Typography mt={2} className='text-orange-300 font-bold'>TECHNICAL SKILLS</Typography>
+                <Typography mt={2} className='text-red-300 font-bold'>TECHNICAL SKILLS</Typography>
                 <Box display="flex" className='justify-center' flexWrap="wrap" gap={1} mt={2}>
                     {profile.techSkills.map((skill, index) => (
-                    <div key={index} label={skill} className='text-indigo-400 p-2 border-2 rounded-lg px-4 border-indigo-400'>{skill}</div>
+                    <div key={index} label={skill} className='text-indigo-400 p-2 border-2 rounded-lg px-4 border-indigo-300'>{skill}</div>
                     ))}
                 </Box>
             </>
@@ -64,7 +64,7 @@ const Profile = () => {
              />
             <button 
                 onClick={() => setIsEditing(true)} 
-                className='bg-indigo-400 text-white p-2 mt-12 mr-12 rounded px-8'
+                className='bg-indigo-100 text-slate-700 font-semibold p-2 mt-12 mr-12 rounded px-8'
             >
                 Edit
             </button>
