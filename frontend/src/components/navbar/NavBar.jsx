@@ -24,7 +24,7 @@ const NavBar = () => {
       <div className="hidden md:flex space-x-6 text-white font-semibold mr-20">
         <Link to="/">
           <motion.button
-            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-indigo-400 hover:font-bold hover:bg-red-50 hover:border-indigo-400"
+            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-indigo-400 hover:font-bold hover:bg-blue-50 hover:border-indigo-400"
             whileHover={{
               scale: 1.1,
             }}
@@ -36,7 +36,7 @@ const NavBar = () => {
         <div className="border-s my-4 border-indigo-300 h-4 justify-center"></div>
         <Link to="/about">
           <motion.button
-            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-indigo-400 hover:font-bold hover:bg-red-50 hover:border-indigo-400"
+            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-indigo-400 hover:font-bold hover:bg-blue-50 hover:border-indigo-400"
             whileHover={{
               scale: 1.1,
             }}
@@ -48,7 +48,7 @@ const NavBar = () => {
         <div className="border-s my-4 border-indigo-300 h-4 justify-center"></div>
         <Link to="/register">
           <motion.button
-            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-indigo-400 hover:font-bold hover:bg-red-50 hover:border-indigo-400"
+            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-indigo-400 hover:font-bold hover:bg-blue-50 hover:border-indigo-400"
             whileHover={{
               scale: 1.1,
             }}
@@ -60,7 +60,7 @@ const NavBar = () => {
         <div className="border-s my-4 border-indigo-300 h-4 justify-center"></div>
         <Link to="/login">
           <motion.button
-            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-indigo-400 hover:font-bold hover:bg-red-50 hover:border-indigo-400"
+            className="px-4 py-2 rounded-md border-2 border-transparent transition-all duration-300 hover:text-indigo-400 hover:font-bold hover:bg-blue-50 hover:border-indigo-400"
             whileHover={{
               scale: 1.1,
             }}

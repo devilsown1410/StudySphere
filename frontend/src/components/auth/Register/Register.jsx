@@ -50,7 +50,7 @@ function Register() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          minHeight: "90vh",
+          minHeight: "100vh",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -107,7 +107,16 @@ function Register() {
                     },
                   }}
               />
-              <FormControl fullWidth margin="normal">
+              <FormControl 
+                fullWidth margin="normal"
+                sx={{
+                  "& .MuiInputLabel-root": { color: "rgb(73, 75, 130)" },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": { borderColor: "rgb(66, 71, 200)" },
+                    "&:hover fieldset": { borderColor: "rgb(66, 71, 200)" },
+                  },
+                }}
+              >
                 <InputLabel id="role-label">Role</InputLabel>
                 <Select
                   labelId="role-label"
