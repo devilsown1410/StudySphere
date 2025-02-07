@@ -7,6 +7,10 @@ import {
     Card,
     CardContent,
     CardActions,
+    Select,
+    MenuItem,
+    FormControl,
+    InputLabel,
 } from "@mui/material";
 import { Link, Navigate } from 'react-router-dom'
 import { doCreateUserWithEmailAndPassword } from '../../../firebase/auth'
@@ -19,6 +23,7 @@ function Register() {
     const [errorMessage, setErrorMessage] = useState('')
     const { currentUser } = useAuth()
     const allowedDomain="@gla.ac.in";
+    const [role, setRole] = useState('student')
 
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -28,7 +33,7 @@ function Register() {
         }
         if (!isRegistering) {
             setIsRegistering(true)
-            await doCreateUserWithEmailAndPassword(email, password).catch(err => {
+            await doCreateUserWithEmailAndPassword(email, password, role).catch(err => {
                 setErrorMessage(err.message)
                 setIsRegistering(false)
             })
@@ -40,34 +45,6 @@ function Register() {
     }
 
     return (
-        // <div className="relative mt-[4rem] max-w-md mx-auto p-6 border border-gray-300 rounded-lg shadow-md bg-white">
-        //     <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
-        //     {errorMessage && <p className="text-red-500 text-center mb-4">{errorMessage}</p>}
-        //     <form onSubmit={onSubmit} className="flex flex-col">
-        //         <input
-        //             type="email"
-        //             value={email}
-        //             onChange={(e) => setEmail(e.target.value)}
-        //             placeholder="Email"
-        //             required
-        //             className="mb-4 p-2 border border-gray-300 rounded"
-        //         />
-        //         <input
-        //             type="password"
-        //             value={password}
-        //             onChange={(e) => setPassword(e.target.value)}
-        //             placeholder="Password"
-        //             required
-        //             className="mb-4 p-2 border border-gray-300 rounded"
-        //         />
-        //         <button type="submit" disabled={isRegistering} className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-400">
-        //             Register
-        //         </button>
-        //     </form>
-        //     <Link to="/login" className="block text-center text-blue-500 mt-4 hover:underline">
-        //         <span className='text-black'>Already have an account?</span> Login
-        //     </Link>
-        // </div>
         <Box
         sx={{
           display: "flex",
@@ -130,6 +107,18 @@ function Register() {
                     },
                   }}
               />
+              <FormControl fullWidth margin="normal">
+                <InputLabel id="role-label">Role</InputLabel>
+                <Select
+                  labelId="role-label"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  label="Role"
+                >
+                  <MenuItem value="student">Student</MenuItem>
+                  <MenuItem value="university">University</MenuItem>
+                </Select>
+              </FormControl>
               <Button
                 variant="contained"
                 color="primary"

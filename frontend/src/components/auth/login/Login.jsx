@@ -7,6 +7,10 @@ import {
     Card,
     CardContent,
     CardActions,
+    Select,
+    MenuItem,
+    FormControl,
+    InputLabel,
 } from "@mui/material";
 import { Navigate, Link } from 'react-router-dom'
 import { doSignInWithEmailAndPaassword, doSignInWithGoogle } from '../../../firebase/auth'
@@ -18,6 +22,7 @@ function Login(){
     const [password, setPassword] = useState('')
     const [isSigningIn, setIsSigningIn] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
+    const [role, setRole] = useState('student')
     
     if (!authContext) {
         return <p>Error: Auth context is not available.</p>
@@ -33,7 +38,7 @@ function Login(){
                 return
             }
             setIsSigningIn(true)
-            await doSignInWithEmailAndPaassword(email, password).catch(err => {
+            await doSignInWithEmailAndPaassword(email, password, role).catch(err => {
                 setErrorMessage(err.message)
                 setIsSigningIn(false)
             })
@@ -43,7 +48,7 @@ function Login(){
         e.preventDefault()
         if (!isSigningIn) {
             setIsSigningIn(true)
-            doSignInWithGoogle().catch(err => {
+            doSignInWithGoogle(role).catch(err => {
                 setErrorMessage(err.message)
                 setIsSigningIn(false)
             })
@@ -55,36 +60,12 @@ function Login(){
     }
 
     return (
-        // <div className='relative mt-[4rem]'>
-        //     <h2>Login</h2>
-        //     {errorMessage && <p>{errorMessage}</p>}
-        //     <form onSubmit={onSubmit}>
-        //         <input
-        //             type="email"
-        //             value={email}
-        //             onChange={(e) => setEmail(e.target.value)}
-        //             placeholder="Email"
-        //             required
-        //         />
-        //         <input
-        //             type="password"
-        //             value={password}
-        //             onChange={(e) => setPassword(e.target.value)}
-        //             placeholder="Password"
-        //             required
-        //         />
-        //         <button type="submit" disabled={isSigningIn}>Sign In</button>
-        //     </form>
-        //     <button onClick={onGoogleSignIn} disabled={isSigningIn}>Sign In with Google</button>
-        //     <Link to="/forgot-password">Forgot Password?</Link>
-        // </div>
         <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           minHeight: "90vh",
-          // background: 'linear-gradient(45deg, #6a11cb 0%, #2575fc 100%)',
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -141,6 +122,18 @@ function Login(){
                     },
                   }}
               />
+              <FormControl fullWidth margin="normal">
+                <InputLabel id="role-label">Role</InputLabel>
+                <Select
+                  labelId="role-label"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  label="Role"
+                >
+                  <MenuItem value="student">Student</MenuItem>
+                  <MenuItem value="university">University</MenuItem>
+                </Select>
+              </FormControl>
               <Button
                 onClick={onSubmit}
                 variant="contained"
