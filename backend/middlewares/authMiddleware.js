@@ -12,11 +12,9 @@ const verifyToken = async (req, res, next) => {
   if (!token) {
     return res.status(401).json({ message: "Unauthorized: No token provided" });
   }
-  console.log("inside")
   try {
     const decodedToken = await admin.auth().verifyIdToken(token);
     req.user = decodedToken;
-    console.log("done")
     next();
   } catch (error) {
     res.status(401).json({ message: "Unauthorized: Invalid token" });
