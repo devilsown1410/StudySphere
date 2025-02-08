@@ -9,10 +9,10 @@ if (!admin.apps.length) {
 
 const verifyToken = async (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
-
   if (!token) {
     return res.status(401).json({ message: "Unauthorized: No token provided" });
   }
+  console.log("inside")
   try {
     const decodedToken = await admin.auth().verifyIdToken(token);
     req.user = decodedToken;
@@ -23,12 +23,12 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
-const verifyUniversity=async(req,res,next)=>{
-  const universityDomain=req.user.email.split("@")[1];
-  if(!universityDomain.includes("gla.ac.in")){
-    return res.status(403).json({message:"Access Denied"});
-  }
-  next();
-}
+// const verifyUniversity=async(req,res,next)=>{
+//   const universityDomain=req.user.email.split("@")[1];
+//   if(!universityDomain.includes("gla.ac.in")){
+//     return res.status(403).json({message:"Access Denied"});
+//   }
+//   next();
+// }
 
 module.exports = verifyToken;

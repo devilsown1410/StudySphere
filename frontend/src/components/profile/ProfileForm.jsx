@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle, Box } from '@mui/material';
+import axios from 'axios';
 
 const ProfileForm = ({ profile, setProfile, setIsEditing }) => {
   const [formData, setFormData] = useState(profile);
@@ -17,14 +18,24 @@ const ProfileForm = ({ profile, setProfile, setIsEditing }) => {
   const addCodingProfile = () => {
     setFormData({
       ...formData,
-      codingProfiles: [...formData.codingProfiles, { platform: '', link: '' }],
+      codingProfiles: [...formData.codingProfiles, { platform: '', link: '', username: '' }],
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setProfile(formData);
-    setIsEditing(false);
+    try {
+      const token = localStorage.getItem('token');
+      await axios.put(`http://localhost:3000/users/${formData.email}`, formData, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      setProfile(formData);
+      setIsEditing(false);
+    } catch (error) {
+      console.error('Error updating profile:', error);
+    }
   };
 
   return (
@@ -110,6 +121,19 @@ const ProfileForm = ({ profile, setProfile, setIsEditing }) => {
                   label="Profile Link"
                   value={profile.link}
                   onChange={(e) => handleCodingProfileChange(index, 'link', e.target.value)}
+                  fullWidth
+                  sx={{
+                    "& .MuiInputLabel-root": { color: "rgb(73, 75, 130)" },
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": { borderColor: "rgb(66, 71, 200)" },
+                      "&:hover fieldset": { borderColor: "rgb(66, 71, 200)" },
+                    },
+                  }}
+                />
+                <TextField
+                  label="Username"
+                  value={profile.username}
+                  onChange={(e) => handleCodingProfileChange(index, 'username', e.target.value)}
                   fullWidth
                   sx={{
                     "& .MuiInputLabel-root": { color: "rgb(73, 75, 130)" },

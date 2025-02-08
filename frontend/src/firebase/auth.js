@@ -7,6 +7,7 @@ export const doCreateUserWithEmailAndPassword = async (email, password, role) =>
     const result = await createUserWithEmailAndPassword(auth, email, password);
     const user = result.user;
     localStorage.setItem('token', result._tokenResponse.idToken);
+    localStorage.setItem('email',user.email);
     await axios.post('http://localhost:3000/users/newuser', {
         email: user.email,
         uid: user.uid,
@@ -19,6 +20,7 @@ export const doSignInWithEmailAndPaassword = async (email, password, role) => {
     const result = await signInWithEmailAndPassword(auth, email, password);
     const user = result.user;
     localStorage.setItem('token', result._tokenResponse.idToken);
+    localStorage.setItem('email',user.email);
     await axios.post('http://localhost:3000/users/newuser', {
         email: user.email,
         uid: user.uid,
@@ -32,6 +34,7 @@ export const doSignInWithGoogle = async (role) => {
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
     localStorage.setItem('token', result._tokenResponse.idToken);
+    localStorage.setItem('email',user.email);
     await axios.post('http://localhost:3000/users/newuser', {
         name: user.displayName,
         email: user.email,
@@ -43,6 +46,7 @@ export const doSignInWithGoogle = async (role) => {
 
 export const doSignOut = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('email');
     return auth.signOut();
 }
 
