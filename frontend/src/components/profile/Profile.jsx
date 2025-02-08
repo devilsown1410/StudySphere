@@ -97,14 +97,14 @@ const Profile = () => {
 
   return (
     <div className='flex flex-col justify-center align-center mt-8 p-4 min-w-[60vw]'>
-      <Paper elevation={3} sx={{ p: 4, borderRadius: 2, bgcolor: 'rgb(34, 40, 64)' }}>
+      <Paper elevation={3} sx={{ p: 4, borderRadius: 2, bgcolor:'transparent', boxShadow:'none' }}>
         <Grid container spacing={4}>
           <Grid item xs={12} md={4} sx={{ textAlign: 'center' }}>
             <Avatar
               src={profile.profilePhoto}
-              sx={{ width: 200, height: 200, border: '3px solid rgb(122, 135, 174)', mx: 'auto' }}
+              sx={{ width: 200, height: 200, border: '3px solid rgb(122, 135, 174)', mx: 'auto',py:'2' }}
             />
-            <Typography variant="h4" className='text-white mt-4'>{profile.name}</Typography>
+            <h3 className='text-white text-4xl font-bold mt-4 mb-2'>{profile.name}</h3>
             <Typography className='text-slate-400'>{profile.email}</Typography>
             <button
               onClick={() => setIsEditing(true)}
@@ -117,24 +117,30 @@ const Profile = () => {
             {isEditing ? (
               <ProfileForm profile={profile} setProfile={setProfile} setIsEditing={setIsEditing} />
             ) : (
-              <>
-                <Typography variant="h6" className='text-red-300 font-bold'>EDUCATION</Typography>
-                <Typography color="white">{profile.college}</Typography>
-                <Typography color="white">{profile.degree}</Typography>
-                <Typography variant="h6" className='text-red-300 font-bold mt-4'>TECHNICAL SKILLS</Typography>
-                <Box display="flex" flexWrap="wrap" gap={1} mt={2}>
+              <div className='pl-[6rem] flex flex-col justify-center mt-[4rem] align-center'>
+                <h4 className='text-red-300 font-bold'>EDUCATION</h4>
+                {
+                  profile.college? (
+                    <p className='text-2xl text-slate-200 font-semibold'>{profile.college}</p>
+                  ):(
+                    <p className='text-4xl text-slate-200 font-semibold'>---</p>
+                  )
+                }
+                <p className='text-2xl text-slate-200 font-semibold'>{profile.degree}</p>
+                <h4 className='text-red-300 font-bold mt-4'>TECHNICAL SKILLS</h4>
+                <div className='flex flex-wrap max-w-400 gap-3 mt-4 justify-center'>
                   {profile.techSkills.map((skill, index) => (
                     <div key={index} className='text-indigo-400 p-2 border-2 rounded-lg px-4 border-indigo-300'>{skill}</div>
                   ))}
-                </Box>
-              </>
+                </div>
+              </div>
             )}
           </Grid>
         </Grid>
       </Paper>
 
-      <Paper elevation={3} sx={{ p: 4, borderRadius: 2, bgcolor: 'rgb(34, 40, 64)', mt: 4 }}>
-        <Typography variant="h4" className='text-indigo-200 text-center pb-2'>Coding Profiles</Typography>
+      <Paper elevation={3} sx={{ p: 4, borderRadius: 2, bgcolor: 'transparent',boxShadow:'none', mt: 4 }}>
+        <h4 className='text-indigo-300 text-5xl font-bold text-center pb-2'>Coding Profiles</h4>
         <Grid container spacing={4}>
           {profile.codingProfiles.map((profile, index) => (
             <Grid item xs={12} md={4} key={index} sx={{ textAlign: 'center' }}>
@@ -154,23 +160,23 @@ const Profile = () => {
         </Grid>
       </Paper>
 
-      <Paper elevation={3} sx={{ p: 4, borderRadius: 2, bgcolor: 'rgb(34, 40, 64)', mt: 4 }}>
-        <Typography variant="h4" className='text-indigo-200 text-center pb-2'>Coding Statistics</Typography>
+      <Paper elevation={3} sx={{ p: 4, borderRadius: 2, bgcolor: 'rgb(30, 33, 44)', mt: 4 }}>
+        <Typography variant="h4" className='text-blue-200 text-center font-semibold pb-2'>Statistics</Typography>
         <Box sx={{ textAlign: 'center' }}>
           <Typography variant="h6" className='text-white'>Total Questions Solved</Typography>
           <Typography className='text-slate-400'>{totalQuestionsSolved}</Typography>
         </Box>
         <Box sx={{ mt: 4 }}>
-          <Typography variant="h6" className='text-white text-center'>LeetCode Rating (Last 5 Contests)</Typography>
-          <Line data={leetCodeRatingData} />
+          <h6 className='text-blue-200 text-3xl mt-8 mb-4 font-semibold text-center'>LeetCode Rating (Last 5 Contests)</h6>
+          <Line data={leetCodeRatingData}/>
         </Box>
         <Box sx={{ mt: 4 }}>
-          <Typography variant="h6" className='text-white text-center'>Questions Solved by Difficulty</Typography>
+          <h6 className='text-blue-200 text-3xl mt-8 mb-4 font-semibold text-center'>Questions Solved by Difficulty</h6>
           <Doughnut data={questionDifficultyData} height={200} width={200} />
         </Box>
         <Grid container spacing={4} sx={{ mt: 4 }}>
           <Grid item xs={12} md={4}>
-            <Typography variant="h6" className='text-white text-center'>LeetCode</Typography>
+            <h6 className='text-white text-2xl font-bold text-yellow-200 text-center mb-4'>LeetCode</h6>
             <Typography className='text-slate-400 text-center'>Username: {profile.codingProfiles.find(p => p.platform === 'LeetCode')?.username || 'NA'}</Typography>
             <Typography className='text-slate-400 text-center'>Submissions: {codingStats.leetcode.submissionCount || 0}</Typography>
             <Typography className='text-slate-400 text-center'>Ranking: {codingStats.leetcode.rating || 0}</Typography>
@@ -178,13 +184,13 @@ const Profile = () => {
             <Typography className='text-slate-400 text-center'>Active Days: {codingStats.leetcode.activeDays || 0}</Typography>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography variant="h6" className='text-white text-center'>GitHub</Typography>
+            <h6 className='text-white text-2xl font-bold text-yellow-200 text-center mb-4'>GitHub</h6>
             <Typography className='text-slate-400 text-center'>Username: {profile?.codingProfiles.find(p => p.platform === 'GitHub')?.username || 'NA'}</Typography>
             <Typography className='text-slate-400 text-center'>Public Repos: {codingStats.github.publicRepos || 0}</Typography>
             <Typography className='text-slate-400 text-center'>Contributions: {codingStats.github.contributions || 0}</Typography>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography variant="h6" className='text-white text-center'>Codeforces</Typography>
+            <h6 className='text-white text-2xl font-bold text-yellow-200 text-center mb-4'>Codeforces</h6>
             <Typography className='text-slate-400 text-center'>Username: {profile?.codingProfiles.find(p => p.platform === 'Codeforces')?.username || 'NA'}</Typography>
             <Typography className='text-slate-400 text-center'>Rating: {codingStats.codeforces.rating}</Typography>
             <Typography className='text-slate-400 text-center'>Max Rating: {codingStats.codeforces.maxRating}</Typography>
