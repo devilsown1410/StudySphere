@@ -60,7 +60,7 @@ const Profile = () => {
   }, [profile]);
 
   if (!profile || !codingStats) {
-    return <CircularProgress sx={{ display: 'block', mx: 'auto', mt: 4 }} />;
+    return <CircularProgress sx={{ display: 'block', mx: 'auto', mt: 4, color: 'rgb(35, 38, 52)' }} />;
   }
 
   const totalQuestionsSolved = (codingStats.leetcode.submissionCount || 0) +
@@ -117,7 +117,7 @@ const Profile = () => {
             {isEditing ? (
               <ProfileForm profile={profile} setProfile={setProfile} setIsEditing={setIsEditing} />
             ) : (
-              <div className='pl-[6rem] flex flex-col justify-center mt-[4rem] align-center'>
+              <div className='flex flex-col justify-center mt-[4rem] align-center'>
                 <h4 className='text-red-300 font-bold'>EDUCATION</h4>
                 {
                   profile.college? (

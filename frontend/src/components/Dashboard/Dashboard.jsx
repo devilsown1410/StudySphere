@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import SideBar from './SideBar';
 import Profile from '../profile/Profile';
+import ChatRoom from '../chat/ChatRoom';
 
 function Dashboard() {
     const { currentUser } = useAuth()
@@ -18,7 +19,7 @@ function Dashboard() {
         case 'Resources':
             // return <Resources />;
         case 'ChatRoom':
-            // return <ChatRoom />;
+            return <ChatRoom/>;
         case 'VideoLectures':
             // return <VideoLectures />;
         case 'Settings':
@@ -51,10 +52,10 @@ function Dashboard() {
             <div className="flex flex-1 pt-[4rem]">
                 {/* <Sidebar /> */}
                 <div className="fixed top-16 left-0 h-full w-55 z-10 mt-1">
-                <SideBar/>
+                <SideBar setActiveComponent={setActiveComponent}/>
                 </div>
                 <main className='flex-1 ml-60 overflow-y-auto'>
-                <div className="flex justify-center align-center p-6 rounded-lg">
+                <div className="flex justify-center w-[80vw] align-center p-6 rounded-lg">
                     {renderComponent()}
                 </div>
                 {/* <div>
