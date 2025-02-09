@@ -13,6 +13,8 @@ const userSchema=new mongoose.Schema({
     bio:String,
     role:String,
     profilePicture:String,
+    college:String,
+    degree:String,
     codingProfiles: [codingProfileSchema],
     uploadedMaterials:[{type:mongoose.Schema.Types.ObjectId,ref:"Material"}],
 })
